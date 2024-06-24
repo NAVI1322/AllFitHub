@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -12,7 +12,6 @@ export default function Signup() {
     username: '',
     email: '',
     password: '',
-    rememberMe: false,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,15 +21,39 @@ export default function Signup() {
       [name]: type === 'checkbox' ? checked : value,
     }));
 
-    console.log(formData);
 
-     console.log(name, value , type , checked);
+
+ 
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form Data Submitted:', formData);
+
+    
+    try{
+      const res = await  axios.post("http://localhost:3000/api/v1/auth/register",formData
+      )
+
+        if(res.data.message=="User already exists")
+          {
+            return new Error("User Already Exists")
+          }
+
+     
+
+        alert("Sign In successfully");
+      
+        navigate("/login");
+
+    }
+    catch(e)
+    {
+      alert("user Already Exist")
+      console.log("user exist already")
+    }
+    
   };
 
   return (
@@ -94,25 +117,6 @@ export default function Signup() {
           </div>
           <div className="font-light text-xs flex justify-end">
             Already have an account? <a className="text-blue-700 hover:text-blue-400 text-md px-2 cursor-pointer" onClick={() => navigate('/login')}>Login</a>
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <Checkbox
-                id="remember-me"
-                name="rememberMe"
-                className="h-4 w-4 rounded text-primary focus:ring-primary"
-                checked={formData.rememberMe}
-                onChange={handleChange}
-              />
-              <Label htmlFor="remember-me" className="ml-2 block text-sm text-muted-foreground">
-                Remember me
-              </Label>
-            </div>
-            <div className="text-sm">
-              <a href="#" className="font-medium text-primary hover:text-gray-500">
-                Forgot your password?
-              </a>
-            </div>
           </div>
           <div>
             <Button
