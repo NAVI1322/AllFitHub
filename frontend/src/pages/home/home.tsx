@@ -1,11 +1,12 @@
+import RecipeCard from "@/components/recipeCard";
 
 
 const HomePage = () => {
-    return (
-        <div>
-            Home Page
-        </div>
-    );
+  return (
+    <div>
+      <RecipeCard />
+    </div>
+  );
 }
 
 export default HomePage;
