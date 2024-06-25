@@ -3,6 +3,7 @@ import axios from "axios";
 import TypingAnimation from "@/components/layout/typingAnimation";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 
 interface ChatMessage {
   type: "user" | "bot";
@@ -88,6 +89,8 @@ export default function ChatApp() {
               Zen Mentor
             </span>
           </h1>{" "}
+          <div className="flex justify-between items-center space-x-3">
+          <ModeToggle  />
           <Button
             variant={"outline"}
             className="text-1xl mr-10"
@@ -95,6 +98,8 @@ export default function ChatApp() {
           >
             Back
           </Button>
+          
+          </div>
         </div>
         <div
           className="flex-grow p-6 overflow-y-auto container"
