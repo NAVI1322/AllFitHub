@@ -41,20 +41,22 @@ export default function ChatApp() {
 
   const sendMessage = (message: string) => {
     const url = "https://api.openai.com/v1/chat/completions";
-
+  
     const headers = {
       "Content-type": "application/json",
       Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
     };
-
+  
     const data = {
       model: "gpt-3.5-turbo-0125",
       messages: [
         {
-          role: "user",
+          role: "system",
           content:
-            "you are a mental , health fitness  trainer and medical professional give the answer the next question according to that, if is not related to fitness tell the user you are a fitness trainer " +
-            message,
+          "You are an AI assistant specializing in mental health and physical fitness. You provide professional advice and guidance on fitness, exercise routines, mental well-being, and overall health. If a question is outside of this scope, politely inform the user that you can only answer questions related to mental health and physical fitness and do not provide a response to unrelated questions." },
+        {
+          role: "user",
+          content: message,
         },
       ],
     };

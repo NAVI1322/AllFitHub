@@ -63,13 +63,14 @@ export const loginUser = async (req, res) => {
     }
 
     const passMatch = await bcrypt.compare(password, user.password)
+    console.log(passMatch)
 
     if (!passMatch) {
       return res.status(401).json({ error: "Invalid Email or password" })
     }
 
     const token = generateToken(user.id);
-
+    
     res.status(200).json({
       id: user.id,
       message: "User logged in ",
