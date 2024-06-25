@@ -8,15 +8,11 @@ import {
   SheetFooter,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
 } from "@/components/ui/sheet";
 
 export function DietModal() {
   return (
-    <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="outline">Open</Button>
-      </SheetTrigger>
+    
       <SheetContent>
         <SheetHeader>
           <SheetTitle className="flex space-x-2 border-b mt-5">
@@ -61,6 +57,6 @@ export function DietModal() {
       </SheetClose>
     </SheetFooter>
       </SheetContent>
-    </Sheet>
+
   );
 }
