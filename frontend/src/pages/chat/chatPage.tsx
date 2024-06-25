@@ -3,6 +3,7 @@ import axios from "axios";
 import TypingAnimation from "@/components/layout/typingAnimation";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 
 interface ChatMessage {
   type: "user" | "bot";
@@ -41,20 +42,22 @@ export default function ChatApp() {
 
   const sendMessage = (message: string) => {
     const url = "https://api.openai.com/v1/chat/completions";
-
+  
     const headers = {
       "Content-type": "application/json",
       Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
     };
-
+  
     const data = {
       model: "gpt-3.5-turbo-0125",
       messages: [
         {
-          role: "user",
+          role: "system",
           content:
-            "you are a mental , health fitness  trainer and medical professional give the answer the next question according to that, if is not related to fitness tell the user you are a fitness trainer " +
-            message,
+          "You are an AI assistant specializing in mental health and physical fitness. You provide professional advice and guidance on fitness, exercise routines, mental well-being, and overall health. If a question is outside of this scope, politely inform the user that you can only answer questions related to mental health and physical fitness and do not provide a response to unrelated questions." },
+        {
+          role: "user",
+          content: message,
         },
       ],
     };
@@ -86,6 +89,8 @@ export default function ChatApp() {
               Zen Mentor
             </span>
           </h1>{" "}
+          <div className="flex justify-between items-center space-x-3">
+          <ModeToggle  />
           <Button
             variant={"outline"}
             className="text-1xl mr-10"
@@ -93,6 +98,8 @@ export default function ChatApp() {
           >
             Back
           </Button>
+          
+          </div>
         </div>
         <div
           className="flex-grow p-6 overflow-y-auto container"

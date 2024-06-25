@@ -1,9 +1,7 @@
-import Image from "next/image";
 import { Card, CardTitle, CardHeader, CardContent } from "./ui/card";
 import { BarChart } from "lucide-react";
 import { useEffect, useState } from "react";
 import { recipesFetch, recepiesApiParams } from "@/services/apiFetch";
-import { info } from "console";
 
 
 const EDAMAM_RECIPES_ID = import.meta.env.VITE_EDAMAM_RECIPES_ID

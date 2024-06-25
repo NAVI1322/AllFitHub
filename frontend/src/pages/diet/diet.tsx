@@ -1,4 +1,3 @@
-
 import DietCard from "@/components/layout/Diet_card";
 import RecipeCard from "@/components/recipeCard";
 
