@@ -97,13 +97,13 @@ export function DietModal({ recipe }) {
         <div className="flex items-center text-sm text-green-800 font-bold gap-4 justify-center">
           {recipe.label}
         </div>
-        <div className="flex items-center text-md gap-4 justify-center p-2">
-
-        </div>
+        <p className="text-sm text-gray-600 dark:text-gray-400 text-center overflow-hidden text-ellipsis">
+          {recipe.healthLabels.join(', ')}
+        </p>
       </div>
       <SheetFooter>
         <SheetClose asChild>
-          <Button type="submit" className="text-white px-4 py-2 rounded-md">Close</Button>
+          <Button type="submit" className="text-white my-4 px-4 py-2 rounded-md">Close</Button>
         </SheetClose>
       </SheetFooter>
     </SheetContent>
