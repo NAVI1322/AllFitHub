@@ -1,12 +1,9 @@
-import DietCard from "@/components/layout/Diet_card";
-import RecipeCard from "@/components/recipeCard";
-
+import DietCardContainer from "@/components/layout/dietContainer";
 
 const DietPage = () => {
   return (
     <div>
-      <DietCard />
-      <RecipeCard />
+      <DietCardContainer />
     </div>
   );
 }

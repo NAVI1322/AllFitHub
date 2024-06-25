@@ -5,7 +5,7 @@ import Login from "./pages/login/login";
 import Signup from "./pages/signup/signup";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import ChatApp from "./pages/chat/chatPage";
-import DietPage from "./pages/Diet/diet.tsx";
+import DietPage from "./pages/diet/diet.tsx";
 
 function App() {
   return (
