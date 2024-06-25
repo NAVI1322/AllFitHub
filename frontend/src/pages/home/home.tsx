@@ -3,6 +3,9 @@ import { Navbar } from "@/components/layout/NavBar";
 import { Button } from "@/components/ui/button";
 import FitnessPage from "../../components/page_comp/FitnessPage";
 import WhySection from "@/components/page_comp/WhySection";
+import TeamPage from "../Team/team";
+import ContactUs from "@/components/page_comp/contactUs";
+import Footer from "@/components/page_comp/contactUs";
 
 
 
@@ -69,11 +72,17 @@ const HomePage: React.FC<HomePageProps> = () => {
           </Button>
         </div>
       </div>
-      <div className="h-screen w-full">
+      <div className="w-full">
         <WhySection />
       </div>
-      <div className="h-screen w-full bg-fixed" ref={FitnessP}>
+      <div className="h-screen w-full " ref={FitnessP}>
         <FitnessPage />
+      </div>
+      <div className="h-screen w-full " >
+        <TeamPage />
+      </div>
+      <div className=" w-full border-t " >
+        <Footer/>
       </div>
       
     </div>

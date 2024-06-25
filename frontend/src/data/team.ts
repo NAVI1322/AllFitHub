@@ -3,6 +3,7 @@ export interface TeamMember {
     ProfilePicture?:string;
     name: string;
     role: string;
+    description:string,
     twitter?: string;
     github?:string;
     linkedin?: string;
