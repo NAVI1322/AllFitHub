@@ -53,7 +53,7 @@ export default function Login() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">
         <div>
-          <img src="/placeholder.svg" alt="Acme Inc" width={48} height={48} className="mx-auto h-12 w-auto" />
+          <img src="../../../public/logo1.png" alt="Acme Inc" width={48} height={48} className="mx-auto h-12 w-auto" />
           <h2 className="mt-6 text-center text-4xl font-bold tracking-tight text-foreground p-3 ">
             Login to your account
           </h2>
@@ -100,7 +100,7 @@ export default function Login() {
           <div>
             <Button
               type="submit"
-              className="group relative flex w-full justify-center rounded-md border border-transparent bg-primary py-2 px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-foreground hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              className="group relative flex w-full justify-center rounded-md border border-transparent bg-primary py-2 px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-foreground hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 hover:border-black dark:hover:border-white"
             >
               Sign in
             </Button>

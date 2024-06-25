@@ -60,7 +60,7 @@ export default function Signup() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">
         <div>
-          <img src="/placeholder.svg" alt="Acme Inc" width={48} height={48} className="mx-auto h-12 w-auto" />
+          <img src="../../../public/logo1.png" alt="Acme Inc" width={48} height={48} className="mx-auto h-12 w-auto" />
           <h2 className="mt-6 text-center text-4xl font-bold tracking-tight text-foreground p-3">
             Sign up in to your account
           </h2>
@@ -115,13 +115,13 @@ export default function Signup() {
               />
             </div>
           </div>
-          <div className="font-light text-xs flex justify-end">
-            Already have an account? <a className="text-blue-700 hover:text-blue-400 text-md px-2 cursor-pointer" onClick={() => navigate('/login')}>Login</a>
+          <div className="font-light text-xs flex justify-end font-medium">
+            Already have an account? <a className="text-blue-700 hover:text-blue-400 text-md px-2 cursor-pointer font-semibold" onClick={() => navigate('/login')}>Login</a>
           </div>
           <div>
             <Button
               type="submit"
-              className="group relative flex w-full justify-center rounded-md border border-transparent bg-primary py-2 px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-foreground hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              className="group relative flex w-full justify-center rounded-md border-2 bg-primary py-2 px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-foreground hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 hover:border-black dark:hover:border-white "
             >
               Sign up
             </Button>

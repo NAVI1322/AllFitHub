@@ -36,13 +36,13 @@ const FeelingSad = () => {
   };
 
   return (
-    <div className=" flex  mx-auto p-4 pt-6 md:p-6 lg:p-12 space-x-2">
-      <h1 className="text-3xl font-bold mb-4">I'm feeling</h1>
+    <div className=" flex  mx-auto p-4 pt-6 md:p-6 lg:p-12 space-x-2 items-center">
+      <h1 className="text-3xl font-bold">I'm feeling</h1>
       <div className="flex flex-col gap-4 ">
       <select
   value={feeling}
   onChange={(e) => setFeeling(e.target.value)}
-  className="bg-red-100 rounded text-3xl underline font-bold  text-red-500 bg-transparent appearance-none ring-white outline-none focus:ring-0 w-auto"
+  className="bg-red-100 rounded text-3xl underline font-bold  text-red-500 bg-transparent appearance-none ring-white outline-none focus:ring-0 w-auto cursor-pointer"
 >
   <option value="anxious" className="text-yellow-600">Anxious or worried</option>
   <option value="sad" className="text-blue-600">Sad</option>

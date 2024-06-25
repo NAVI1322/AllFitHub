@@ -41,7 +41,7 @@ export const Navbar = () => {
   return (
     <div
       className={`fixed top-0 left-0 right-0 flex items-center justify-between px-10 pt-5 pb-5 shadow-md z-10 w-full ${
-        isScrolled ? "bg-slate-300 dark:bg-gray-800 " : "" // Conditional background color change
+        isScrolled ? "bg-slate-300 dark:bg-gray-800 transition-colors duration-250" : "" // Conditional background color change
       }`}
     >
       <div className="">
@@ -58,7 +58,7 @@ export const Navbar = () => {
         <div onClick={() => navigate("/signup")}>
           <Button
             variant="secondary"
-            className="text-md rounded-full bg-slate-300 hover:bg-slate-500 hover:text-slate-200 hover:ring-2 hover:ring-white dark:bg-gray-800  hover:ring-offset-red-200 ring-1"
+            className={`text-md rounded-full bg-slate-300 hover:bg-slate-500 hover:text-slate-200 hover:ring-2 hover:ring-white dark:bg-gray-800  hover:ring-offset-red-200 ring-1 ${user ? "hidden": ""}`}
           >
             Register Now
           </Button>

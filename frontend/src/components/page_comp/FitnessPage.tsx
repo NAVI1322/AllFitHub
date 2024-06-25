@@ -54,8 +54,8 @@ const FitnessPage = () => {
                 </p>
               </CardContent>
             </div>
-            <CardFooter className="flex justify-end p-4">
-              <Button className="bg-white text-gray-900 px-6 py-2 rounded-full shadow-lg transform transition duration-300 hover:bg-gray-300 hover:scale-105">
+            <CardFooter className="flex justify-end ">
+              <Button className="bg-white text-gray-900 px-6 pb-2 rounded-full shadow-lg transform transition duration-300 hover:bg-gray-300 hover:scale-105">
                 Try Now!
               </Button>
             </CardFooter>
@@ -78,7 +78,7 @@ const FitnessPage = () => {
                 </p>
               </CardContent>
             </div>
-            <CardFooter className="flex justify-end p-4">
+            <CardFooter className="flex justify-end">
               <Button className="bg-white text-gray-900 px-6 py-2 rounded-full shadow-lg transform transition duration-300 hover:bg-gray-300 hover:scale-105">
                 Try Now!
               </Button>
@@ -102,7 +102,7 @@ const FitnessPage = () => {
                 </p>
               </CardContent>
             </div>
-            <CardFooter className="flex justify-end p-4">
+            <CardFooter className="flex justify-end">
               <Button className="bg-white text-gray-900 px-6 py-2 rounded-full shadow-lg transform transition duration-300 hover:bg-gray-300 hover:scale-105">
                 Try Now!
               </Button>

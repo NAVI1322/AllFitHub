@@ -54,18 +54,18 @@ const HomePage: React.FC<HomePageProps> = () => {
         ></div>
         <div className="relative w-full h-screen flex flex-col justify-center items-center z-10 bg-black bg-opacity-50">
           <div className="text-center px-4">
-            <h1 className="lg:text-7xl font-bold text-4xl md:text-5xl mb-4 text-white">
-              Welcome to   <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">
+            <h1 className="lg:text-7xl font-bold text-4xl md:text-5xl mb-4 text-white poppins-bold">
+              Welcome to   <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text animated-background">
              ALL FIT HUB
             </span>
             </h1>
-            <p className="text-white font-thin text-lg mb-8 ">
+            <p className="text-white font-thin text-lg mb-8 poppins-verylight">
             “Your fitness and mental health journey starts here. Embrace the challenge, nurture your mind, and transform your life.”
             </p>
           </div>
           <Button
             variant="ghost"
-            className="bg-transparent text-3xl  hover:bg-white  hover:text-black  rounded-lg p-6 ease-in-out duration-200 font-medium text-white border-2 border-white"
+            className="bg-transparent poppins-regular text-3xl  hover:bg-white  hover:text-black  rounded-lg p-6 ease-in-out duration-200 font-medium text-white border-2 border-white"
             onClick={() => scrollHandler(FitnessP)}
           >
             Get Started

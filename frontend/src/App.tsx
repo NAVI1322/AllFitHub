@@ -16,10 +16,8 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-    <Route path="/chat" element={<ChatApp/>} />
-    <Route path="/Diet" element={<DietPage/>} />
-
-    
+        <Route path="/chat" element={<ChatApp />} />
+        <Route path="/Diet" element={<DietPage />} />
       </Routes>
     </ThemeProvider>
   );
