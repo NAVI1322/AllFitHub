@@ -67,7 +67,7 @@ const HomePage: React.FC<HomePageProps> = () => {
           </div>
           <Button
             variant="ghost"
-            className="bg-transparent poppins-regular text-3xl  hover:bg-white  hover:text-black  rounded-lg p-6 ease-in-out duration-200 font-medium text-white border-2 border-white"
+            className="bg-transparent poppins-regular text-2xl  hover:bg-white  hover:text-black  rounded-lg p-6 ease-in-out duration-200 font-medium text-white border-2 border-white"
             onClick={() => scrollHandler(FitnessP)}
           >
             Get Started

@@ -14,7 +14,7 @@ const TeamPage = () => {
   }, []);
 
   return (
-    <div className="container m-20 mx-auto p-4 mt-20">
+    <div className="container m-20 mx-auto p-4 mt-20 poppins-regular">
       <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16" data-aos="fade-up">
         <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Our Team</h2>
         <p className="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">
