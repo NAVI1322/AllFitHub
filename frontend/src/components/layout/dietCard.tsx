@@ -6,7 +6,7 @@ const DietCard = ({ recipe }) => {
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
         <img
-          className="rounded-t-lg w-[100%] h-[240px]"
+          className="rounded-t-lg w-[100%] h-[350px] shadow-md"
           src={recipe.image}
           alt={recipe.label}
         />

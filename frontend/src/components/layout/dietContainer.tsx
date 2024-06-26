@@ -57,10 +57,15 @@ const DietCardsContainer = () => {
         <div>Loading...</div>
       ) : (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 flex">
-          {data.map((item, index) => (
-            <DietCard key={index} recipe={item.recipe} onClick={() => setSelectedRecipe(item.recipe)} />
-          ))}
-        </div>
+          {data.map((item, index) => {
+            if (index < 7) {
+              return (
+                <DietCard key={index} recipe={item.recipe} onClick={() => setSelectedRecipe(item.recipe)} />
+              );
+            } else {
+              return null; // or handle else case as needed
+            }
+          })}        </div>
       )}
       <Sheet open={!!selectedRecipe} onOpenChange={() => setSelectedRecipe(null)}>
         {selectedRecipe && <DietModal recipe={selectedRecipe} />}
