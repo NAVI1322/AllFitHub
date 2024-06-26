@@ -10,6 +10,7 @@ import {
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
 import { FaRobot, FaUtensils, FaHeartbeat } from "react-icons/fa"; // Import icons from react-icons
+import { Link } from "react-router-dom";
 
 const FitnessPage = () => {
   useEffect(() => {
@@ -19,17 +20,17 @@ const FitnessPage = () => {
   return (
     <div className="bg-slate-300 dark:bg-gray-800 h-full min-h-screen w-full transition-colors bg-fixed">
       <div className="text-center px-20 pt-20 pb-10" data-aos="fade-right">
-        <div className="text-6xl dark:text-gray-100 font-bold text-white mb-4 shadow-lg p-5 font-sans rounded-xl w-full">
-          What We Offer
+        <div className="text-6xl dark:text-gray-100 font-bold text-white mb-4 shadow-lg p-5 rounded-xl w-full poppins-semibold ">
+        How We Can Help
         </div>
-        <div data-aos="fade-left" className="text-md font-sans text-sm font-extralight dark:text-slate-100 text-black">
-        <p className="mb-2">
+        <div data-aos="fade-left" className="text-md font-sans text-sm dark:text-slate-100 text-black ">
+        <p className="mb-2 poppins-light">
             We promote the health and mental health of all mankind by providing
             a variety of services designed to enhance your well-being. Whether
             you're looking for personalized fitness advice, nutritious meal
             plans, or tools to track your progress, we've got you covered.
           </p>
-          <p>
+          <p className="poppins-light">
             Our offerings are designed to help you achieve your health goals
             with ease and confidence. Explore what we have to offer and take the
             first step towards a healthier, happier you.
@@ -56,7 +57,7 @@ const FitnessPage = () => {
             </div>
             <CardFooter className="flex justify-end ">
               <Button className="bg-white text-gray-900 px-6 pb-2 rounded-full shadow-lg transform transition duration-300 hover:bg-gray-300 hover:scale-105">
-                Try Now!
+                <Link to="/chat">Try Now!</Link>
               </Button>
             </CardFooter>
           </Card>
@@ -80,13 +81,13 @@ const FitnessPage = () => {
             </div>
             <CardFooter className="flex justify-end">
               <Button className="bg-white text-gray-900 px-6 py-2 rounded-full shadow-lg transform transition duration-300 hover:bg-gray-300 hover:scale-105">
-                Try Now!
+                <Link to="/Diet">Try Now!</Link>
               </Button>
             </CardFooter>
           </Card>
         </div>
         <div data-aos="fade-up" data-aos-delay="400" className="flex-shrink-0">
-          <Card className="h-[400px] w-[400px] rounded-2xl shadow-xl bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500 text-white flex flex-col justify-between transition transform hover:scale-105 duration-300">
+          <Card className="h-[400px] w-[400px] rounded-2xl shadow-xl bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500 text-white flex flex-col justify-between transition transform hover:scale-105 duration-300 hover:animated-fitnessP">
             <div className="p-4">
               <CardHeader className="flex items-center">
                 <FaHeartbeat className="text-4xl mr-3" />

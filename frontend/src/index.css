@@ -11,6 +11,13 @@
     -moz-animation: animation 3s ease infinite;
     animation: animation 3s ease infinite;
 }
+.animated-fitnessP{
+  background-size: 500%;
+
+  -webkit-animation: animation 3s ease;
+  -moz-animation: animation 3s ease ;
+  animation: animation 3s ease ;
+}
 
 @keyframes animation {
     0%,
