@@ -5,7 +5,7 @@ import Login from "./pages/login/login";
 import Signup from "./pages/signup/signup";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import ChatApp from "./pages/chat/chatPage";
-import DietPage from "./pages/Diet/diet";
+import DietPage from "./pages/diet/diet.tsx";
 
 function App() {
   return (
@@ -16,6 +16,8 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/chat" element={<ChatApp />} />
+        <Route path="/diet" element={<DietPage />} />
         <Route path="/chat" element={<ChatApp />} />
         <Route path="/Diet" element={<DietPage />} />
       </Routes>

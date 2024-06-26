@@ -1,16 +1,16 @@
+
 import React, { useRef, useState, useEffect, RefObject } from "react";
 import { Navbar } from "@/components/layout/NavBar";
 import { Button } from "@/components/ui/button";
 import FitnessPage from "../../components/page_comp/FitnessPage";
 import WhySection from "@/components/page_comp/WhySection";
 import TeamPage from "../Team/team";
-import ContactUs from "@/components/page_comp/contactUs";
 import Footer from "@/components/page_comp/contactUs";
 
 
 
 // Interface for the HomePage component's props
-interface HomePageProps {}
+interface HomePageProps { }
 
 // Interface for the scroll handler function
 interface ScrollHandler {
@@ -26,7 +26,7 @@ const HomePage: React.FC<HomePageProps> = () => {
     "url(../../public/HeroSlides/HeroImages/img1.webp)",
   ];
 
-  
+
   useEffect(() => {
     const slideInterval = setInterval(() => {
       setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
@@ -40,7 +40,7 @@ const HomePage: React.FC<HomePageProps> = () => {
       window.scrollTo({ top: ref.current.offsetTop, behavior: "smooth" });
     }
   };
-  
+
 
   return (
     <div>
