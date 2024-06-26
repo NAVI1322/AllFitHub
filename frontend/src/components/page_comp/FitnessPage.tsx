@@ -10,12 +10,15 @@ import {
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS styles
 import { FaRobot, FaUtensils, FaHeartbeat } from "react-icons/fa"; // Import icons from react-icons
+import { useNavigate } from "react-router-dom";
+
 
 const FitnessPage = () => {
   useEffect(() => {
     AOS.init({ duration: 1800 }); // Initialize AOS with a duration of 1800ms
   }, []);
 
+   const navigate = useNavigate();
   return (
     <div className="bg-slate-300 dark:bg-gray-800 h-full min-h-screen w-full transition-colors bg-fixed">
       <div className="text-center px-20 pt-20 pb-10" data-aos="fade-right">
@@ -55,7 +58,7 @@ const FitnessPage = () => {
               </CardContent>
             </div>
             <CardFooter className="flex justify-end ">
-              <Button className="bg-white text-gray-900 px-6 pb-2 rounded-full shadow-lg transform transition duration-300 hover:bg-gray-300 hover:scale-105">
+              <Button onClick={()=>navigate('/chat')} className="bg-white text-gray-900 px-6 pb-2 rounded-full shadow-lg transform transition duration-300 hover:bg-gray-300 hover:scale-105">
                 Try Now!
               </Button>
             </CardFooter>
@@ -79,7 +82,7 @@ const FitnessPage = () => {
               </CardContent>
             </div>
             <CardFooter className="flex justify-end">
-              <Button className="bg-white text-gray-900 px-6 py-2 rounded-full shadow-lg transform transition duration-300 hover:bg-gray-300 hover:scale-105">
+              <Button  onClick={()=>navigate('/diet')} className="bg-white text-gray-900 px-6 py-2 rounded-full shadow-lg transform transition duration-300 hover:bg-gray-300 hover:scale-105">
                 Try Now!
               </Button>
             </CardFooter>

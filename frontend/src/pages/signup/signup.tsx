@@ -36,6 +36,8 @@ export default function Signup() {
       const res = await  axios.post("http://localhost:3000/api/v1/auth/register",formData
       )
 
+
+      
         if(res.data.message=="User already exists")
           {
             return new Error("User Already Exists")
@@ -43,7 +45,7 @@ export default function Signup() {
 
      
 
-        alert("Sign In successfully");
+        alert("Sign Up successful");
       
         navigate("/login");
 

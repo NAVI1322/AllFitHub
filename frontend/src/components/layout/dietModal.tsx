@@ -8,7 +8,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 
-export function DietModal({ recipe }) {
+export function DietModal({ recipe }:any) {
 
   return (
     <SheetContent>
@@ -45,13 +45,7 @@ export function DietModal({ recipe }) {
           {recipe.ingredientLines.join(", ")}
         </div>
       </div>
-      <SheetFooter>
-        <SheetClose asChild>
-          <Button type="submit" className="text-white px-4 py-2 rounded-md">
-            Close
-          </Button>
-        </SheetClose>
-      </SheetFooter>
+      
     </SheetContent>
   );
 }

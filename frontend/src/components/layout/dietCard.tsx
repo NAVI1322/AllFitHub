@@ -1,9 +1,10 @@
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter, SheetClose } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
-const DietCard = ({ recipe }) => {
+const DietCard = ({ recipe }:any) => {
+  console.log(recipe);
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="max-w-sm  bg-white  border border-gray-200 rounded-lg shadow w-[340px] dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
         <img
           className="rounded-t-lg w-[100%] h-[240px]"
@@ -12,13 +13,19 @@ const DietCard = ({ recipe }) => {
         />
       </a>
 
-      <div className="p-5">
+      <div className="p-5 shadow-md dark:shadow-md ">
         <a href="#">
-          <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+          <h5 className="mb-2 text-xl tracking-tight text-gray-900 dark:text-white text-center font-semibold">
             {recipe.label}
           </h5>
         </a>
-        <div className="flex justify-evenly">
+        <div className="space-x-2 flex justify-center items-baseline p-4 font-light">
+        <div className="text-md text-center">Portion</div>
+          <div className="text-xs text-center">{Math.round(recipe.totalWeight)}g</div>
+          
+          
+        </div>
+        <div className="flex justify-evenly font-light">
           <div className="flex-col text-center">
             <div className="text-xs">{Math.round(recipe.totalNutrients.FAT.quantity)}g</div>
             <div className="text-md">Fat</div>
@@ -34,10 +41,8 @@ const DietCard = ({ recipe }) => {
         </div>
         <Sheet>
           <SheetTrigger asChild>
-            <a
-              href="#"
-              className="flex items-center px-3 py-2 mt-4 justify-center text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
+            <div className="flex justify-end mt-2">
+            <Button variant={"ghost" } className="flex ">
               Read more
               <svg
                 className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
@@ -54,7 +59,8 @@ const DietCard = ({ recipe }) => {
                   d="M1 5h12m0 0L9 1m4 4L9 9"
                 />
               </svg>
-            </a>
+              </Button>
+            </div>
           </SheetTrigger>
           <DietModal recipe={recipe} />
         </Sheet>
@@ -63,7 +69,7 @@ const DietCard = ({ recipe }) => {
   );
 };
 
-export function DietModal({ recipe }) {
+export function DietModal({ recipe }:any) {
   return (
     <SheetContent>
       <SheetHeader>
@@ -91,16 +97,22 @@ export function DietModal({ recipe }) {
         </SheetDescription>
       </SheetHeader>
       <div className="space-y-2 mt-2">
-        <div className="flex items-center text-md gap-4 justify-center">
+        <div className="flex items-center text-xl gap-4 justify-center font-light">
           {recipe.label}
         </div>
         <div className="flex items-center text-sm text-green-800 font-bold gap-4 justify-center">
-          {recipe.label}
+          {recipe.cuisineType}
         </div>
-        <div className="flex items-center text-md gap-4 justify-center p-2">
-
-        </div>
-      </div>
+        <div className="text-md font-thin mb-3">Ingredients :</div>
+        <p className="text-sm text-gray-600 dark:text-gray-400 text-center overflow-hidden text-ellipsis font-light">
+        {recipe.ingredientLines.map((ingredient:any, index:any) => (
+    <div key={index} className="flex space-y-1">
+      {ingredient}
+      <br />
+    </div>
+  ))}
+        </p>
+      </div>  
       <SheetFooter>
         <SheetClose asChild>
           <Button type="submit" className="text-white px-4 py-2 rounded-md">Close</Button>

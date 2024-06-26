@@ -4,11 +4,17 @@ import DietCard from "./dietCard";
 import { Sheet } from "@/components/ui/sheet";
 import { DietModal } from "./dietModal";
 import { useNavigate } from 'react-router-dom';
+import TypingAnimation from "./typingAnimation";
+import { Button } from "../ui/button";
+import { ModeToggle } from "../ui/mode-toggle";
 
 const EDAMAM_RECIPES_ID = import.meta.env.VITE_EDAMAM_RECIPES_ID as string;
 const EDAMAM_RECIPES_KEY = import.meta.env.VITE_EDAMAM_RECIPES_KEY as string;
 
+
+
 const DietCardsContainer = () => {
+  const  token = localStorage.getItem("token") || null;
   const [query, setQuery] = useState<string>("chicken");
   const [params, setParams] = useState<recepiesApiParams>({
     q: query,
@@ -49,9 +55,14 @@ const DietCardsContainer = () => {
     navigate('/home');
   };
 
+if(!token){
+  alert("login to use New Recipe finder")
+  navigate('/signup')
+}
+else
   return (
-    <div className="h-screen">
-      <div className="bg-gray-900 text-white py-4 px-6 flex justify-between items-center">
+    <div className="">
+      <div className="bg-gray-900 text-white py-4 px-6 flex justify-between items-center mb-10">
         <button
           className="text-white text-sm font-semibold flex items-center hover:text-gray-300"
           onClick={handleBack}
@@ -72,41 +83,55 @@ const DietCardsContainer = () => {
           </svg>
           Back
         </button>
-        <form onSubmit={handleSearch} className="flex items-center space-x-4">
+        <form onSubmit={handleSearch} className="flex items-center space-x-4 p-6" >
           <input
             type="text"
             value={query}
             onChange={handleInputChange}
             placeholder="Search for recipes..."
-            className="p-2 border border-gray-300 rounded text-black"
+            className="p-2 border border-gray-300  text-black rounded-full w-[300px]"
           />
-          <button
+          <Button
             type="submit"
-            className="ml-2 p-2 bg-blue-500 text-white rounded"
+            variant={"secondary"}
+            className="ml-2   rounded-full p-4"
           >
             Search
-          </button>
-          <button
-            type="button"
-            className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-4 rounded-md shadow-md transition duration-300"
-            onClick={() => navigate('/signup')}
+          </Button>
+          <Button
+          onClick={() => navigate("/signup")}
+            variant="secondary"
+            className={`text-md rounded-full bg-slate-300 hover:bg-slate-500 hover:text-slate-200  dark:bg-gray-800  hover:ring-offset-red-200 outline-none  ${token? "hidden": ""}`}
           >
-            Register
-          </button>
+            Register Now
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={()=>
+              {
+                localStorage.setItem("token","")
+                localStorage.setItem("id","")
+                window.location.reload();
+            }}
+            className={`text-md rounded-full bg-slate-300 hover:bg-slate-500 hover:text-slate-200 hover:ring-2 hover:ring-white dark:bg-gray-800  hover:ring-offset-red-200 ring-1 ${token? "": "hidden"}`} >
+            Logout
+          </Button> 
+          
+          <ModeToggle />
         </form>
       </div>
       {loading ? (
-        <div>Loading...</div>
+        <div className="h-screen flex justify-center items-center"><TypingAnimation /></div>
       ) : (
-        <div className=" flex justify-center grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {data.map((item, index) => (
-            <DietCard
-              key={index}
-              recipe={item.recipe}
-              onClick={() => setSelectedRecipe(item.recipe)}
-            />
-          ))}
-        </div>
+        <div className="">
+  <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+    {data.slice(0, 9).map((item, index) => (
+      <div key={index} className="flex justify-center">
+        <DietCard recipe={item.recipe} onClick={() => setSelectedRecipe(item.recipe)} />
+      </div>
+    ))}
+  </div>
+</div>
       )}
       <Sheet open={!!selectedRecipe} onOpenChange={() => setSelectedRecipe(null)}>
         {selectedRecipe && <DietModal recipe={selectedRecipe} />}

@@ -24,8 +24,10 @@ const HomePage: React.FC<HomePageProps> = () => {
     "url(../../public/HeroSlides/HeroImages/img3.webp)",
     "url(../../public/HeroSlides/HeroImages/img2.jpg)",
     "url(../../public/HeroSlides/HeroImages/img1.webp)",
+    "url(../../public/HeroSlides/HeroImages/img4.jpg)",
   ];
 
+  const  token = localStorage.getItem("token") || null;
 
   useEffect(() => {
     const slideInterval = setInterval(() => {
@@ -56,7 +58,7 @@ const HomePage: React.FC<HomePageProps> = () => {
           <div className="text-center px-4">
             <h1 className="lg:text-7xl font-bold text-4xl md:text-5xl mb-4 text-white poppins-bold">
               Welcome to   <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text animated-background">
-             ALL FIT HUB
+             AllFitHub
             </span>
             </h1>
             <p className="text-white font-thin text-lg mb-8 poppins-verylight">

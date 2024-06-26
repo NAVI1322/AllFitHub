@@ -14,6 +14,7 @@ export default function ChatApp() {
   const [inputValue, setInputValue] = useState<string>("");
   const [chatLog, setChatLog] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const  token = localStorage.getItem("token") || null;
 
   const navigate = useNavigate();
   const chatLogRef = useRef<HTMLDivElement>(null);
@@ -79,7 +80,11 @@ export default function ChatApp() {
         console.log(error);
       });
   };
-
+  if(!token){
+    alert("login to use Zen AI")
+    navigate('/login')
+  }
+  else
   return (
     <div className="  mx-auto ">
       <div className="flex flex-col h-screen ">
@@ -98,6 +103,25 @@ export default function ChatApp() {
           >
             Back
           </Button>
+          <Button
+          onClick={() => navigate("/signup")}
+            variant="secondary"
+            className={`text-md rounded-full bg-slate-300 hover:bg-slate-500 hover:text-slate-200  dark:bg-gray-800  hover:ring-offset-red-200 outline-none  ${token? "hidden": ""}`}
+          >
+            Register Now
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={()=>
+              {
+                localStorage.setItem("token","")
+                localStorage.setItem("id","")
+                window.location.reload();
+            }}
+            className={`text-md rounded-full bg-slate-300 hover:bg-slate-500 hover:text-slate-200 hover:ring-2 hover:ring-white dark:bg-gray-800  hover:ring-offset-red-200 ring-1 ${token? "": "hidden"}`} >
+            Logout
+          </Button> 
+
           
           </div>
         </div>

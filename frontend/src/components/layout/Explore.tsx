@@ -7,31 +7,25 @@ const FeelingSad = () => {
   const handleExplore = () => {
     switch (feeling) {
       case 'anxious':
-        window.location.href = 'https://www.anxiety.org/';
-        break;
-      case 'ad':
-        window.location.href = 'https://www.mentalhealth.gov/';
+        window.location.href = 'https://www.anxietycanada.com/';
         break;
       case 'angry':
-        window.location.href = 'https://www.angermanagement.org/';
+        window.location.href = 'https://www.apa.org/topics/anger/control';
         break;
-      case 'tressed':
-        window.location.href = 'https://www.stress.org/';
+      case 'stressed':
+        window.location.href = 'https://www.mayoclinic.org/healthy-lifestyle/stress-management/in-depth/stress-relievers/art-20047257';
         break;
       case 'afraid':
-        window.location.href = 'https://www.fearof.net/';
+        window.location.href = 'hhttps://mhanational.org/what-can-i-do-when-im-afraid';
         break;
       case 'lonely':
-        window.location.href = 'https://www.mentalhealth.org.uk/a-to-z/l/loneliness';
+        window.location.href = 'https://au.reachout.com/challenges-and-coping/isolation-and-loneliness/what-to-do-when-feeling-lonely-tips';
         break;
       case 'tired':
-        window.location.href = 'https://www.sleepfoundation.org/';
-        break;
-      case 'other':
-        window.location.href = 'https://www.7cups.com/';
+        window.location.href = 'https://www.healthlinkbc.ca/how-stop-feeling-tired-all-time';
         break;
       default:
-        window.location.href = 'https://www.example.com/explore';
+        window.location.href = 'https://www.masterclass.com/articles/how-to-be-strong';
     }
   };
 
