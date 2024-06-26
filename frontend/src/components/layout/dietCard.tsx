@@ -64,6 +64,13 @@ const DietCard = ({ recipe }) => {
 };
 
 export function DietModal({ recipe }) {
+  function capitalizeFirstLetter(word: any) {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
+  function capitalizeEachWord(sentence: any) {
+    return sentence.split(' ').map(word => capitalizeFirstLetter(word)).join(' ');
+  }
+  const subHead = recipe.cuisineType + " " + recipe.mealType;
   return (
     <SheetContent>
       <SheetHeader>
@@ -95,15 +102,18 @@ export function DietModal({ recipe }) {
           {recipe.label}
         </div>
         <div className="flex items-center text-sm text-green-800 font-bold gap-4 justify-center">
-          {recipe.label}
+          {(capitalizeEachWord(subHead))}
         </div>
         <p className="text-sm text-gray-600 dark:text-gray-400 text-center overflow-hidden text-ellipsis">
           {recipe.healthLabels.join(', ')}
         </p>
+        <p>
+          {recipe.ingredientsLines}
+        </p>
       </div>
       <SheetFooter>
         <SheetClose asChild>
-          <Button type="submit" className="text-white my-4 px-4 py-2 rounded-md">Close</Button>
+          <Button type="submit" className="text-slate-800 text-md font-semibold my-4 px-4 py-2 rounded-md">Close</Button>
         </SheetClose>
       </SheetFooter>
     </SheetContent>

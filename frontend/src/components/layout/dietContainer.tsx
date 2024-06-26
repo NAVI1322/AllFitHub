@@ -40,14 +40,14 @@ const DietCardsContainer = () => {
   };
   console.log(data)
   return (
-    <div>
-      <form onSubmit={handleSearch} className="mb-4">
+    <div className="m-6">
+      <form onSubmit={handleSearch} className="m-4">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search for recipes..."
-          className="p-2 border border-gray-300 rounded"
+          className="p-2 border border-gray-300 rounded text-slate-800"
         />
         <button type="submit" className="ml-2 p-2 bg-blue-500 text-white rounded">
           Search
@@ -56,7 +56,7 @@ const DietCardsContainer = () => {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 flex">
           {data.map((item, index) => (
             <DietCard key={index} recipe={item.recipe} onClick={() => setSelectedRecipe(item.recipe)} />
           ))}
