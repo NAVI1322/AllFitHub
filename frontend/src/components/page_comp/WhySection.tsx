@@ -2,7 +2,7 @@ import FeelingSad from "../layout/Explore";
 
 const WhySection = () => {
   return (
-    <div className=" flex-col justify-center items-baseline  p-10 bg-slate-50 dark:bg-gray-950" 
+    <div className=" flex-col justify-center items-baseline  p-10 bg-slate-50 dark:bg-gray-950 poppins-regular" 
     // style={{ backgroundImage:"url(../../public/explore_background/img.jpg)" }}
     >
      <div className="flex justify-center">
