@@ -45,7 +45,7 @@ export async function recipesFetch(params: recepiesApiParams): Promise<any> {
   }
 }
 
-const myParams: recepiesApiParams = {
+export const myParams: recepiesApiParams = {
   q: "chicken",
   app_id: EDAMAM_RECIPES_ID, // Replace with your actual app ID
   app_key: EDAMAM_RECIPES_KEY, // Replace with your actual app key

@@ -1,15 +1,15 @@
 
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+
 import { ModeToggle } from "../ui/mode-toggle";
 import { Button } from "../ui/button";
 
 export const Navbar = () => {
   const navigate = useNavigate();
 
-  const [params] = useSearchParams();
-  const id = params.get("id");
+
+  
   const  token = localStorage.getItem("token") || null;
 
   

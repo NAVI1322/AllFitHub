@@ -27,7 +27,7 @@ const HomePage: React.FC<HomePageProps> = () => {
     "url(../../public/HeroSlides/HeroImages/img4.jpg)",
   ];
 
-  const  token = localStorage.getItem("token") || null;
+  
 
   useEffect(() => {
     const slideInterval = setInterval(() => {

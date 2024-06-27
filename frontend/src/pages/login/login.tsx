@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
+
 import { Button } from "@/components/ui/button";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -30,7 +30,6 @@ export default function Login() {
         });
   
         if (res.data.message === "Invalid Email or password") {
-            setErrorMessage("Invalid ");
           throw new Error("Invalid Email or password");
           
         }
@@ -111,6 +110,4 @@ export default function Login() {
   );
 }
 
-function setErrorMessage(message: any) {
-    throw new Error('Function not implemented.');
-}
+
