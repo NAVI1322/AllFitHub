@@ -14,7 +14,7 @@ const EDAMAM_RECIPES_KEY = import.meta.env.VITE_EDAMAM_RECIPES_KEY as string;
 
 
 const DietCardsContainer = () => {
-  const  token = localStorage.getItem("token") || null;
+
   const [query, setQuery] = useState<string>("chicken");
   const [params, setParams] = useState<recepiesApiParams>({
     q: query,
@@ -55,11 +55,7 @@ const DietCardsContainer = () => {
     navigate('/home');
   };
 
-if(!token){
-  alert("login to use New Recipe finder")
-  navigate('/signup')
-}
-else
+
   return (
     <div className="">
       <div className="bg-gray-900 text-white py-4 px-6 flex justify-between items-center mb-10">
