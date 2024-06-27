@@ -27,6 +27,11 @@ const DietCardsContainer = () => {
 
   const navigate = useNavigate();
 
+  function handleNavigation()
+  {
+    navigate('/signup')
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -95,23 +100,21 @@ const DietCardsContainer = () => {
             Search
           </Button>
           <Button
-          onClick={() => navigate("/signup")}
+          onClick={handleNavigation}
             variant="secondary"
-            className={`text-md rounded-full bg-slate-300 hover:bg-slate-500 hover:text-slate-200  dark:bg-gray-800  hover:ring-offset-red-200 outline-none  ${token? "hidden": ""}`}
+            className={`text-md rounded-full bg-slate-300 hover:bg-slate-500 hover:text-slate-200  dark:bg-gray-800  hover:ring-offset-red-200 outline-none`}
           >
             Register Now
           </Button>
-          <Button
+          {/* <Button
             variant="secondary"
             onClick={()=>
               {
-                localStorage.setItem("token","")
-                localStorage.setItem("id","")
                 window.location.reload();
             }}
             className={`text-md rounded-full bg-slate-300 hover:bg-slate-500 hover:text-slate-200 hover:ring-2 hover:ring-white dark:bg-gray-800  hover:ring-offset-red-200 ring-1 ${token? "": "hidden"}`} >
             Logout
-          </Button> 
+          </Button>  */}
           
           <ModeToggle />
         </form>
