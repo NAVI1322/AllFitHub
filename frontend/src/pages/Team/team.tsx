@@ -14,9 +14,9 @@ const TeamPage = () => {
   }, []);
 
   return (
-    <div className="relative bg-gradient-to-b from-slate-300 to-slate-200 dark:from-gray-800 dark:to-gray-900">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 min-h-screen">
-        <div className="mx-auto max-w-2xl text-center mb-8 lg:mb-12" data-aos="fade-up">
+    <section className="w-full mt-20 mb-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center mb-12" data-aos="fade-up">
           <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
             Our Team
           </h2>
@@ -25,20 +25,20 @@ const TeamPage = () => {
           </p>
         </div>
         
-        <div className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-16">
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
           {TeamMembers.map((member, index) => (
             <div 
               key={index} 
               data-aos="fade-up" 
               data-aos-delay={`${index * 100}`}
-              className="h-full"
+              className="flex"
             >
               <TeamCard member={member} />
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -52,7 +52,9 @@ export default function Login() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">
         <div>
-          <img src="../../../public/logo1.png" alt="Acme Inc" width={48} height={48} className="mx-auto h-12 w-auto" />
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+            <img src="/assets/logo1.png" alt="Acme Inc" width={48} height={48} className="mx-auto h-12 w-auto" />
+          </div>
           <h2 className="mt-6 text-center text-4xl font-bold tracking-tight text-foreground p-3 ">
             Login to your account
           </h2>

@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useEffect, RefObject } from "react";
 import { Navbar } from "@/components/layout/NavBar";
 import { Button } from "@/components/ui/button";
@@ -20,22 +19,22 @@ interface ScrollHandler {
 const HomePage: React.FC<HomePageProps> = () => {
   const FitnessP = useRef<HTMLDivElement>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slides = [
-    "url(../../public/HeroSlides/HeroImages/img3.webp)",
-    "url(../../public/HeroSlides/HeroImages/img2.jpg)",
-    "url(../../public/HeroSlides/HeroImages/img1.webp)",
-    "url(../../public/HeroSlides/HeroImages/img4.jpg)",
+  const images = [
+    "url(/assets/hero-images/img3.webp)",
+    "url(/assets/hero-images/img2.jpg)",
+    "url(/assets/hero-images/img1.webp)",
+    "url(/assets/hero-images/img4.jpg)",
   ];
 
   
 
   useEffect(() => {
     const slideInterval = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
     }, 8000); // Change slide every 8 seconds
 
     return () => clearInterval(slideInterval);
-  }, [slides.length]);
+  }, [images.length]);
 
   const scrollHandler: ScrollHandler = (ref) => {
     if (ref.current) {
@@ -52,7 +51,7 @@ const HomePage: React.FC<HomePageProps> = () => {
       <div className="relative w-full h-screen overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center transition-all duration-1000 bg-fixed"
-          style={{ backgroundImage: slides[currentSlide] }}
+          style={{ backgroundImage: images[currentSlide] }}
         ></div>
         <div className="relative w-full h-screen flex flex-col justify-center items-center z-10 bg-black bg-opacity-50">
           <div className="text-center px-4">
@@ -62,7 +61,7 @@ const HomePage: React.FC<HomePageProps> = () => {
             </span>
             </h1>
             <p className="text-white font-thin text-lg mb-8 poppins-verylight">
-            “Your fitness and mental health journey starts here. Embrace the challenge, nurture your mind, and transform your life.”
+            "Your fitness and mental health journey starts here. Embrace the challenge, nurture your mind, and transform your life."
             </p>
           </div>
           <Button

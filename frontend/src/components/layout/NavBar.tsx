@@ -33,7 +33,7 @@ export const Navbar = () => {
     >
       <div className="flex items-center">
         <img
-          src="../../../public/logo1.png"
+          src="/assets/logo1.png"
           alt="Logo"
           className="h-8 sm:h-12 w-auto cursor-pointer"
           onClick={() => navigate('/')}
