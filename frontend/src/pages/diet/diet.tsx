@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { 
-  FaDumbbell, FaRunning, FaHandPeace, FaHeartbeat, FaFire, FaApple, 
-  FaWeight, FaCarrot, FaBrain, FaClock, FaChartLine, FaUsers 
+  FaDumbbell, FaHandPeace, FaHeartbeat, FaFire, FaApple, 
+  FaWeight,  FaClock, FaChartLine, FaUsers 
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 

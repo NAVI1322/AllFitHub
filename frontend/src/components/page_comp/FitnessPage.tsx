@@ -14,10 +14,7 @@ import {
   FaRunning, 
   FaHandPeace, 
   FaHeartbeat, 
-  FaFire, 
-  FaApple, 
   FaChartLine, 
-  FaUsers, 
   FaBrain, 
   FaComments, 
   FaChevronRight 

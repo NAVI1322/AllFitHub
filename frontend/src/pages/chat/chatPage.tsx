@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import { motion } from "framer-motion";
-import { FaRobot, FaKey, FaBrain, FaPaperPlane } from "react-icons/fa";
+import { FaKey, FaPaperPlane } from "react-icons/fa";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import axios from "axios";

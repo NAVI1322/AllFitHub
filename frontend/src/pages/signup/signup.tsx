@@ -117,7 +117,7 @@ export default function Signup() {
               />
             </div>
           </div>
-          <div className="font-light text-xs flex justify-end font-medium">
+          <div className="font-light text-xs flex justify-end ">
             Already have an account? <a className="text-blue-700 hover:text-blue-400 text-md px-2 cursor-pointer font-semibold" onClick={() => navigate('/login')}>Login</a>
           </div>
           <div>
