@@ -13,7 +13,6 @@ import {
   FaDumbbell, 
   FaRunning, 
   FaHandPeace, 
- 
   FaBrain, 
   FaComments, 
   FaChevronRight 
