@@ -14,7 +14,7 @@ const TeamPage = () => {
   }, []);
 
   return (
-    <section className="w-full mt-20 mb-20">
+    <section className="w-full py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-12" data-aos="fade-up">
           <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">

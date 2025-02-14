@@ -76,13 +76,13 @@ const HomePage: React.FC<HomePageProps> = () => {
       <div className="w-full">
         <WhySection />
       </div>
-      <div className="h-screen w-full " ref={FitnessP}>
+      <div className="w-full" ref={FitnessP}>
         <FitnessPage />
       </div>
-      <div className="h-screen w-full " >
+      <div className="w-full mt-8" >
         <TeamPage />
       </div>
-      <div className=" w-full border-t " >
+      <div className="w-full border-t" >
         <Footer/>
       </div>
       

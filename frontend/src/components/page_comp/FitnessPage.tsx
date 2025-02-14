@@ -13,8 +13,7 @@ import {
   FaDumbbell, 
   FaRunning, 
   FaHandPeace, 
-  FaHeartbeat, 
-  FaChartLine, 
+ 
   FaBrain, 
   FaComments, 
   FaChevronRight 
@@ -91,25 +90,11 @@ const workoutCategories = [
     features: ["Daily Routines", "Mindfulness", "Flexibility"]
   },
   {
-    title: "Cardio Fitness",
-    icon: FaHeartbeat,
-    description: "Enhance your cardiovascular health with tailored cardio programs.",
-    color: "from-orange-500 via-amber-500 to-yellow-500",
-    features: ["Heart Health", "Stamina", "Weight Loss"]
-  },
-  {
     title: "Mental Wellness",
     icon: FaBrain,
     description: "Combine physical fitness with mental well-being through specialized routines.",
     color: "from-indigo-500 via-purple-500 to-pink-500",
     features: ["Stress Relief", "Focus", "Balance"]
-  },
-  {
-    title: "Performance Tracking",
-    icon: FaChartLine,
-    description: "Track your progress and achieve your fitness goals with smart analytics.",
-    color: "from-rose-500 via-red-500 to-orange-500",
-    features: ["Goal Setting", "Progress Stats", "Insights"]
   }
 ];
 
@@ -125,10 +110,10 @@ const FitnessPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-300 to-slate-200 dark:from-gray-800 dark:to-gray-900">
-      <div className="container mx-auto px-4 py-8 sm:py-16 pb-24 sm:pb-16">
+    <div className="w-full bg-gradient-to-b from-slate-300 to-slate-200 dark:from-gray-800 dark:to-gray-900">
+      <div className="container mx-auto px-4 py-16">
         {/* Header */}
-        <div className="text-center mb-8 sm:mb-16">
+        <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-5xl font-bold mb-4">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
               Fitness Programs
@@ -141,7 +126,7 @@ const FitnessPage = () => {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
           {workoutCategories.map((category, index) => (
             <motion.div
               key={index}
