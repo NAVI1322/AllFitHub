@@ -1,52 +1,43 @@
-
-
-
 export const TeamMembers = [
     {
       id: 1,
-      profilePicture:"../../../public/TeamImg/image.png",
-      name:"Navneet Sharma",
-      role:"Web Dev",
-      description:"API intergration | Frontend | Backend | Database",
-      linkdin:"",
-      twitter:""
-
+      name: "Navneet Sharma",
+      role: "Web Dev",
+      description: "API intergration | Frontend | Backend | Database",
+      linkedin: "",
+      twitter: ""
     },
     {
       id: 2,
-      profilePicture:"https://picsum.photos/200/300",
-      name:"Samnit Samnit",
-      role:"UI/UX dev",
-     description:"UI / UX designer | Frontend",
-      linkdin:"",
-      twitter:""
+      name: "Samnit Samnit",
+      role: "UI/UX dev",
+      description: "UI / UX designer | Frontend",
+      linkedin: "",
+      twitter: ""
     },
     {
       id: 3,
-      profilePicture:"../../public/logo.jpg",
-      name:"Gurtaj Singh",
-      role:"Full stack Dev",
-      description:"Backend | Frontend | Api Integration",
-      linkdin:"",
-      twitter:""
+      name: "Gurtaj Singh",
+      role: "Full stack Dev",
+      description: "Backend | Frontend | Api Integration",
+      linkedin: "",
+      twitter: ""
     },
     {
       id: 4,
-      profilePicture:"../../public/logo.jpg",
-      name:"Arjun Narang",
-      role:"Content Creator",
-      description:"Content Creation | UI/UX",
-      linkdin:"",
-      twitter:""
+      name: "Arjun Narang",
+      role: "Content Creator",
+      description: "Content Creation | UI/UX",
+      linkedin: "",
+      twitter: ""
     },
     {
       id: 5,
-      profilePicture:"../../public/logo.jpg",
-      name:"Namjot Singh",
-      role:"UI/UX",
-      linkdin:"UI/UX design",
-      description:"Figma UI/UX",
-      twitter:""
+      name: "Namjot Singh",
+      role: "UI/UX",
+      description: "Figma UI/UX",
+      linkedin: "",
+      twitter: ""
     },
     ]
 

@@ -1,3 +1,5 @@
+const { fontFamily } = require("tailwindcss/defaultTheme")
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -18,7 +20,10 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        clearface: ['"ITC Clearface Std"', 'sans-serif'],
+        sans: ["Inter var", ...fontFamily.sans],
+        heading: ["Cal Sans", "Inter var", ...fontFamily.sans],
+        body: ["Inter var", ...fontFamily.sans],
+        display: ["Plus Jakarta Sans", "Inter var", ...fontFamily.sans],
       },
       colors: {
         border: "hsl(var(--border))",

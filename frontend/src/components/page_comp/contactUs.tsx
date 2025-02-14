@@ -20,7 +20,7 @@ const Footer = () => {
   
               <h2 className="mt-4 text-lg font-medium  dark:text-black">Email</h2>
               <p className="mt-2 text-gray-500">Our friendly team is here to help.</p>
-              <p className="mt-2 text-gray-400">navneet.sharma1978@nctorontostudents.ca</p>
+              <p className="mt-2 text-gray-400">navneetsharmaxdev@gmail.com</p>
             </div>
   
             <div className="flex flex-col items-center justify-center text-center">
@@ -31,9 +31,9 @@ const Footer = () => {
                 </svg>
               </span>
   
-              <h2 className="mt-4 text-lg font-medium dark:text-black">Tema</h2>
+              <h2 className="mt-4 text-lg font-medium dark:text-black">Team</h2>
               <p className="mt-2 text-gray-500">Come say hello at our Team.</p>
-              <p className="mt-2 text-gray-400">Niagara College Toronto</p>
+              <p className="mt-2 text-gray-400">NCT hackathon</p>
             </div>
   
             <div className="flex flex-col items-center justify-center text-center">

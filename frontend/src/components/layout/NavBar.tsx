@@ -1,108 +1,76 @@
-
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 import { ModeToggle } from "../ui/mode-toggle";
 import { Button } from "../ui/button";
+import { motion } from "framer-motion";
 
 export const Navbar = () => {
   const navigate = useNavigate();
-
-
-  
-  const  token = localStorage.getItem("token") || null;
-
-  
-
+  const token = localStorage.getItem("token") || null;
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      if (scrollPosition > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(scrollPosition > 0);
     };
 
-    // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
-
-    
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <div
-      className={`fixed top-0 left-0 right-0 flex items-center justify-between px-10 pt-5 pb-5 shadow-md z-10 w-full ${
-        isScrolled ? "bg-slate-300 dark:bg-gray-800 transition-colors duration-250" : "" // Conditional background color change
+    <motion.div
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className={`fixed top-0 left-0 right-0 flex items-center justify-between px-4 sm:px-10 py-4 shadow-lg z-10 w-full backdrop-blur-md transition-all duration-300 ${
+        isScrolled
+          ? "bg-white/80 dark:bg-gray-900/80"
+          : "bg-transparent"
       }`}
     >
-      <div className="">
+      <div className="flex items-center">
         <img
           src="../../../public/logo1.png"
-          alt=""
-          className="h-[50px]"
-        />  
+          alt="Logo"
+          className="h-8 sm:h-12 w-auto cursor-pointer"
+          onClick={() => navigate('/')}
+        />
       </div>
-      <div className="flex gap-4">
-        <div className="flex items-center">
-          <ModeToggle />
-        </div>
-        <div  className="flex justify-between space-x-4 ">
+
+      <div className="flex items-center gap-2 sm:gap-4">
+        <ModeToggle />
+        {!token ? (
+          <>
+            <Button
+              onClick={() => navigate("/signup")}
+              variant="ghost"
+              className="text-sm sm:text-base font-medium bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full px-4 py-2 transition-all duration-300"
+            >
+              Sign Up
+            </Button>
+            <Button
+              onClick={() => navigate("/login")}
+              className="text-sm sm:text-base font-medium bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-full px-6 py-2 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              Login
+            </Button>
+          </>
+        ) : (
           <Button
-          onClick={() => navigate("/signup")}
-            variant="secondary"
-            className={`text-md rounded-full bg-slate-300 hover:bg-slate-500 hover:text-slate-200  dark:bg-gray-800  hover:ring-offset-red-200 outline-none  ${token? "hidden": ""}`}
+            onClick={() => {
+              localStorage.setItem("token", "");
+              localStorage.setItem("id", "");
+              window.location.reload();
+            }}
+            className="text-sm sm:text-base font-medium bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white rounded-full px-6 py-2 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
-            Register Now
-          </Button>
-          <Button
-          onClick={() => navigate("/login")}
-            variant="ghost"
-            className={`text-md rounded-full ${token? "hidden": ""}`}
-          >
-            Login
-          </Button>
-          
-        </div>
-        <div className="flex justify-between space-x-4 ">
-        <Button
-            variant="link"
-            onClick={()=>
-              {
-                navigate('/chat')
-            }}
-            className={`text-md rounded-full  ${token? "": "hidden"}`} >
-            Try Zen AI
-          </Button> 
-          <Button
-            variant="link"
-            onClick={()=>
-              {
-                navigate('/diet')
-            }}
-            className={`text-md rounded-full ${token? "": "hidden"}`} >
-           Try New recipes
-          </Button> 
-        <Button
-            variant="secondary"
-            onClick={()=>
-              {
-                localStorage.setItem("token","")
-                localStorage.setItem("id","")
-            
-window.location.reload();
-            }}
-            className={`text-md rounded-full bg-slate-300 hover:bg-slate-500 hover:text-slate-200 hover:ring-2 hover:ring-white dark:bg-gray-800  hover:ring-offset-red-200 ring-1 ${token? "": "hidden"}`} >
             Logout
-          </Button> 
-        </div>
+          </Button>
+        )}
       </div>
-     
-    </div>
+    </motion.div>
   );
 };

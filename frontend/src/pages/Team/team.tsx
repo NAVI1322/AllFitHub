@@ -14,19 +14,29 @@ const TeamPage = () => {
   }, []);
 
   return (
-    <div className="container m-20 mx-auto p-4 mt-20 poppins-regular">
-      <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16" data-aos="fade-up">
-        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Our Team</h2>
-        <p className="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">
-          Meet our talented team members!
-        </p>
-      </div>
-      <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {TeamMembers.map((member, index) => (
-          <div key={index} data-aos="fade-up" data-aos-delay={`${index * 100}`}>
-            <TeamCard member={member} />
-          </div>
-        ))}
+    <div className="relative bg-gradient-to-b from-slate-300 to-slate-200 dark:from-gray-800 dark:to-gray-900">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 min-h-screen">
+        <div className="mx-auto max-w-2xl text-center mb-8 lg:mb-12" data-aos="fade-up">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
+            Our Team
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300">
+            Meet our talented team members!
+          </p>
+        </div>
+        
+        <div className="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-16">
+          {TeamMembers.map((member, index) => (
+            <div 
+              key={index} 
+              data-aos="fade-up" 
+              data-aos-delay={`${index * 100}`}
+              className="h-full"
+            >
+              <TeamCard member={member} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

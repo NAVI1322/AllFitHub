@@ -1,9 +1,12 @@
-import { useState, useEffect, FormEvent, ChangeEvent, useRef } from "react";
-import axios from "axios";
-import TypingAnimation from "@/components/layout/typingAnimation";
+import { useState, useEffect, FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { ModeToggle } from "@/components/ui/mode-toggle";
+import { motion } from "framer-motion";
+import { FaRobot, FaKey, FaBrain, FaPaperPlane } from "react-icons/fa";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import axios from "axios";
 
 interface ChatMessage {
   type: "user" | "bot";
@@ -11,167 +14,202 @@ interface ChatMessage {
 }
 
 export default function ChatApp() {
-  const [inputValue, setInputValue] = useState<string>("");
-  const [chatLog, setChatLog] = useState<ChatMessage[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const  token = localStorage.getItem("token") || null;
-
   const navigate = useNavigate();
-  const chatLogRef = useRef<HTMLDivElement>(null);
+  const [apiKey, setApiKey] = useState("");
+  const [isKeySet, setIsKeySet] = useState(false);
+  const [message, setMessage] = useState("");
+  const [chatLog, setChatLog] = useState<ChatMessage[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const scrollToBottom = () => {
-    if (chatLogRef.current) {
-      chatLogRef.current.scrollTop = chatLogRef.current.scrollHeight;
+  const handleSetApiKey = () => {
+    if (apiKey.trim()) {
+      setIsKeySet(true);
+      localStorage.setItem("openai_key", apiKey);
     }
   };
 
   useEffect(() => {
-    scrollToBottom();
-  }, [chatLog]);
+    const savedKey = localStorage.getItem("openai_key");
+    if (savedKey) {
+      setApiKey(savedKey);
+      setIsKeySet(true);
+    }
+  }, []);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSendMessage = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!message.trim()) return;
 
-    setChatLog((prevChatLog) => [
-      ...prevChatLog,
-      { type: "user", message: inputValue },
-    ]);
-    sendMessage(inputValue);
-
-    setInputValue("");
-  };
-
-  const sendMessage = (message: string) => {
-    const url = "https://api.openai.com/v1/chat/completions";
-  
-    const headers = {
-      "Content-type": "application/json",
-      Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
-    };
-  
-    const data = {
-      model: "gpt-3.5-turbo-0125",
-      messages: [
-        {
-          role: "system",
-          content:
-          "You are an AI assistant specializing in mental health and physical fitness. You provide professional advice and guidance on fitness, exercise routines, mental well-being, and overall health. If a question is outside of this scope, politely inform the user that you can only answer questions related to mental health and physical fitness and do not provide a response to unrelated questions." },
-        {
-          role: "user",
-          content: message,
-        },
-      ],
-    };
-
+    // Add user message to chat
+    setChatLog(prev => [...prev, { type: "user", message }]);
     setIsLoading(true);
 
-    axios
-      .post(url, data, { headers: headers })
-      .then((response) => {
-        console.log(response);
-        setChatLog((prevChatLog) => [
-          ...prevChatLog,
-          { type: "bot", message: response.data.choices[0].message.content },
-        ]);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        console.log(error);
-      });
-  };
-  if(!token){
-    alert("login to use Zen AI")
-    navigate('/login')
-  }
-  else
-  return (
-    <div className="  mx-auto ">
-      <div className="flex flex-col h-screen ">
-        <div className="p-2 flex items-center justify-between  border-b border-white shadow-md ">
-          <h1 className="relative text-5xl font-bold text-center p-2">
-            <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">
-              Zen Mentor
-            </span>
-          </h1>{" "}
-          <div className="flex justify-between items-center space-x-3">
-          <ModeToggle  />
-          <Button
-            variant={"outline"}
-            className="text-1xl mr-10"
-            onClick={() => navigate("/home")}
-          >
-            Back
-          </Button>
-          <Button
-          onClick={() => navigate("/signup")}
-            variant="secondary"
-            className={`text-md rounded-full bg-slate-300 hover:bg-slate-500 hover:text-slate-200  dark:bg-gray-800  hover:ring-offset-red-200 outline-none  ${token? "hidden": ""}`}
-          >
-            Register Now
-          </Button>
-          <Button
-            variant="secondary"
-            onClick={()=>
-              {
-                localStorage.setItem("token","")
-                localStorage.setItem("id","")
-                window.location.reload();
-            }}
-            className={`text-md rounded-full bg-slate-300 hover:bg-slate-500 hover:text-slate-200 hover:ring-2 hover:ring-white dark:bg-gray-800  hover:ring-offset-red-200 ring-1 ${token? "": "hidden"}`} >
-            Logout
-          </Button> 
+    try {
+      const response = await axios.post(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          model: "gpt-3.5-turbo",
+          messages: [
+            {
+              role: "system",
+              content: "I am an AI fitness assistant created by Navneet Sharma for the NCT Hackathon. I specialize in providing personalized fitness advice, workout plans, and exercise recommendations. My knowledge covers strength training, cardio workouts, flexibility exercises, and athletic performance optimization. I can help with workout routines, exercise form, fitness goals, and training schedules. While I can discuss general nutrition in the context of fitness, I'll remind users that I'm primarily focused on exercise and physical training. For any medical or specific dietary concerns, I'll always recommend consulting with healthcare professionals. I aim to provide practical, safe, and evidence-based fitness guidance to help users achieve their fitness goals."
+            },
+            {
+              role: "user",
+              content: message
+            }
+          ]
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${apiKey}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
 
-          
+      const botResponse = response.data.choices[0].message.content;
+      setChatLog(prev => [...prev, { type: "bot", message: botResponse }]);
+    } catch (error) {
+      setChatLog(prev => [...prev, { type: "bot", message: "Sorry, I encountered an error. Please check your API key or try again later." }]);
+    }
+
+    setIsLoading(false);
+    setMessage("");
+  };
+
+  if (!isKeySet) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-slate-300 to-slate-200 dark:from-gray-800 dark:to-gray-900">
+        <div className="flex flex-col h-screen">
+          <div className="p-2 flex items-center justify-between border-b border-white/20 shadow-md backdrop-blur-sm bg-white/10">
+            <h1 className="relative text-4xl sm:text-5xl font-bold text-center p-2">
+              <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">
+                Zen Mentor AI
+              </span>
+            </h1>
+            <div className="flex justify-between items-center space-x-3">
+              <ModeToggle />
+              <Button
+                variant={"outline"}
+                className="text-base"
+                onClick={() => navigate("/home")}
+              >
+                Back
+              </Button>
+            </div>
+          </div>
+
+          <div className="flex-1 flex items-center justify-center p-4">
+            <Card className="w-full max-w-md p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 backdrop-blur-sm">
+              <CardContent className="space-y-4">
+                <div className="flex items-center space-x-3 text-purple-500 mb-4">
+                  <FaKey className="text-3xl" />
+                  <h2 className="text-2xl font-bold">Enter OpenAI API Key</h2>
+                </div>
+                <Input
+                  type="password"
+                  placeholder="sk-..."
+                  value={apiKey}
+                  onChange={(e) => setApiKey(e.target.value)}
+                  className="bg-white/20 border-white/20"
+                />
+                <Button 
+                  onClick={handleSetApiKey}
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                >
+                  Start Chatting
+                </Button>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mt-4">
+                  Your API key is stored locally and never sent to our servers.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
-        <div
-          className="flex-grow p-6 overflow-y-auto container"
-          ref={chatLogRef}
-        >
-          <div className="flex flex-col space-y-4">
-            {chatLog.map((message, index) => (
-              <div
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-300 to-slate-200 dark:from-gray-800 dark:to-gray-900">
+      <div className="flex flex-col h-screen">
+        <div className="p-2 flex items-center justify-between border-b border-white/20 shadow-md backdrop-blur-sm bg-white/10">
+          <h1 className="relative text-4xl sm:text-5xl font-bold text-center p-2">
+            <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text">
+              Zen Mentor AI
+            </span>
+          </h1>
+          <div className="flex justify-between items-center space-x-3">
+            <ModeToggle />
+            <Button
+              variant={"outline"}
+              className="text-base"
+              onClick={() => {
+                localStorage.removeItem("openai_key");
+                setIsKeySet(false);
+              }}
+            >
+              Reset Key
+            </Button>
+            <Button
+              variant={"outline"}
+              className="text-base"
+              onClick={() => navigate("/home")}
+            >
+              Back
+            </Button>
+          </div>
+        </div>
+
+        <div className="flex-1 overflow-y-auto p-4">
+          <div className="max-w-4xl mx-auto space-y-4">
+            {chatLog.map((chat, index) => (
+              <motion.div
                 key={index}
-                className={`flex ${
-                  message.type === "user" ? "justify-end" : "justify-start"
-                }`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`flex ${chat.type === 'user' ? 'justify-end' : 'justify-start'}`}
               >
-                <div
-                  className={`${
-                    message.type === "user" ? "bg-blue-500" : "bg-gray-600"
-                  } rounded-xl px-4 py-2   text-white md:max-w-md max-w-sm lg:max-w-lg` }
-                >
-                  {message.message}
+                <div className={`max-w-[80%] rounded-2xl px-4 py-2 ${
+                  chat.type === 'user' 
+                    ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
+                    : 'bg-white/10 backdrop-blur-sm border border-white/20'
+                }`}>
+                  <p className="whitespace-pre-wrap">{chat.message}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
             {isLoading && (
-              <div key={chatLog.length} className="flex justify-start">
-                <div className="rounded-lg p-4 text-white max-w-sm">
-                  <TypingAnimation />
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="flex justify-start"
+              >
+                <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-4 py-2">
+                  <p>Thinking...</p>
                 </div>
-              </div>
+              </motion.div>
             )}
           </div>
         </div>
-        <form onSubmit={handleSubmit} className="flex-none p-6">
-          <div className="flex rounded-lg border border-gray-4  00 bg-gray-300 text-black">
-            <input
-              type="text"
-              className="flex-grow px-4 py-4 bg-transparent text-black focus:outline-none"
-              placeholder="Ask your Fitness Questions Here ...."
-              value={inputValue}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setInputValue(e.target.value)
-              }
+
+        <form onSubmit={handleSendMessage} className="p-4 border-t border-white/20 backdrop-blur-sm bg-white/10">
+          <div className="max-w-4xl mx-auto flex gap-2">
+            <Input
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Ask about fitness, nutrition, or wellness..."
+              className="flex-1 bg-white/20 border-white/20"
             />
-            <button
+            <Button 
               type="submit"
-              className="bg-blue-500 rounded-lg px-10 ring-1 py-2 text-white font-semibold focus:outline-none hover:bg-blue-700 transition-colors duration-300"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+              disabled={isLoading}
             >
+              <FaPaperPlane className="mr-2" />
               Send
-            </button>
+            </Button>
           </div>
         </form>
       </div>
